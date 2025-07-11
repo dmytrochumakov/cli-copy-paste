@@ -9,7 +9,7 @@ const (
 	CopyTaskNumber
 	CopyTaskFull
 	FollowTaskLink
-	Delete
+	DeleteTask
 	List
 )
 
@@ -23,7 +23,7 @@ var commandMap = map[Command]CommandPair{
 	CopyTaskNumber: {"copy-task-number", "ctn"},
 	CopyTaskFull:   {"copy-task-full", "ctf"},
 	FollowTaskLink: {"follow-task-link", "f"},
-	Delete:         {"delete", "d"},
+	DeleteTask:     {"delete-task", "dt"},
 	List:           {"list", "l"},
 }
 
@@ -46,12 +46,10 @@ func (cmd Command) Usage() string {
 	switch cmd {
 	case PasteTask:
 		return res + " <task_number>"
-	case Delete:
-		return res + " <key>"
 	}
 	return res
 }
 
 func GetAllCommands() []Command {
-	return []Command{List, PasteTask, CopyTaskNumber, CopyTaskFull, Delete}
+	return []Command{PasteTask, CopyTaskNumber, CopyTaskFull, DeleteTask, List}
 }

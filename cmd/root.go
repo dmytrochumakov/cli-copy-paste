@@ -61,12 +61,11 @@ func Execute() {
 				fmt.Println(usageMessage(cmd))
 			}
 			cmdErr = FollowTaskLinkCmd(cfg)
-		case Delete:
-			if len(os.Args) < 3 {
+		case DeleteTask:
+			if len(os.Args) < 2 {
 				fmt.Println(usageMessage(cmd))
 			}
-			key := os.Args[2]
-			cmdErr = cfg.Delete(key)
+			cmdErr = DeleteTaskCmd(cfg)
 		case List:
 			if len(os.Args) < 2 {
 				fmt.Println(usageMessage(cmd))
