@@ -40,12 +40,12 @@ func Execute() {
 
 	if cmd, ok := ParseCommand(input); ok {
 		switch cmd {
-		case Paste:
+		case PasteTask:
 			if len(os.Args) < 3 {
 				fmt.Println(usageMessage(cmd))
 			}
 			value := os.Args[2]
-			cmdErr = cfg.PasteTask(value)
+			cmdErr = PasteTaskCmd(cfg, value)
 		case CopyTaskFull:
 			if len(os.Args) < 2 {
 				fmt.Println(usageMessage(cmd))
@@ -55,7 +55,7 @@ func Execute() {
 			if len(os.Args) < 2 {
 				fmt.Println(usageMessage(cmd))
 			}
-			cmdErr = CopyTaskNumberFunc(cfg)
+			cmdErr = CopyTaskNumberCmd(cfg)
 		case FollowTaskLink:
 			if len(os.Args) < 2 {
 				fmt.Println(usageMessage(cmd))

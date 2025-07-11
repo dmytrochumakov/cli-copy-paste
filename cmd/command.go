@@ -5,7 +5,7 @@ import "strings"
 type Command int
 
 const (
-	Paste = iota
+	PasteTask = iota
 	CopyTaskNumber
 	CopyTaskFull
 	FollowTaskLink
@@ -19,7 +19,7 @@ type CommandPair struct {
 }
 
 var commandMap = map[Command]CommandPair{
-	Paste:          {"paste", "p"},
+	PasteTask:      {"paste-task", "pt"},
 	CopyTaskNumber: {"copy-task-number", "ctn"},
 	CopyTaskFull:   {"copy-task-full", "ctf"},
 	FollowTaskLink: {"follow-task-link", "f"},
@@ -44,7 +44,7 @@ func (cmd Command) Usage() string {
 	res := strings.Join(cmdStrs, "|")
 
 	switch cmd {
-	case Paste:
+	case PasteTask:
 		return res + " <task_number>"
 	case Delete:
 		return res + " <key>"
@@ -53,5 +53,5 @@ func (cmd Command) Usage() string {
 }
 
 func GetAllCommands() []Command {
-	return []Command{List, Paste, CopyTaskNumber, CopyTaskFull, Delete}
+	return []Command{List, PasteTask, CopyTaskNumber, CopyTaskFull, Delete}
 }
