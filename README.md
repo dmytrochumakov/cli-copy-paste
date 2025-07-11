@@ -1,2 +1,2 @@
 # cli-copy-paste
-cli analogue of macos menu bar
+cli analogue of macos copy-paste-menu-bar
